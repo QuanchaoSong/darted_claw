@@ -1,4 +1,5 @@
-import 'package:darted_claw/home/home_logic.dart';
+import 'package:darted_claw/pages/home/home_logic.dart';
+import 'package:darted_claw/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
         child: Row(
           children: [
             // 左侧边栏
-            _buildSidebar(),
+            _buildSidebar(context),
 
             // 中间聊天区
             Expanded(child: _buildChatArea()),
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSidebar() {
+  Widget _buildSidebar(BuildContext context) {
     return Container(
       width: 260,
       margin: EdgeInsets.all(16),
@@ -113,7 +114,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 8),
-                  _buildIconButton(icon: Icons.settings, onTap: () {}),
+                  _buildIconButton(
+                    icon: Icons.settings,
+                    onTap: () => openSettings(context),
+                  ),
                 ],
               ),
             ),

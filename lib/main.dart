@@ -1,4 +1,5 @@
-import 'package:darted_claw/home/home_page.dart';
+import 'package:darted_claw/pages/home/home_page.dart';
+import 'package:darted_claw/others/services/app_config_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
@@ -6,6 +7,8 @@ import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LiquidGlassWidgets.initialize();
+  // 初始化配置服务（读取 ~/.darted_claw/config.json）
+  await Get.putAsync(() => AppConfigService().init());
   runApp(const MyApp());
 }
 
